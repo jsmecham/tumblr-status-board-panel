@@ -1,0 +1,15 @@
+
+%header
+ 
+  %h1 Tumblr Follower Counts
+
+%main
+
+  %section.followers
+    %header
+      .widgets
+        - @blogs.each do |blog|
+          .blog
+            %iframe{ src: "followers/#{blog["name"]}" }
+            %button{ onclick: "location.href='panicboard://?url=#{URI.escape("#{settings.base_url}/followers/#{blog["name"]}?token=#{current_user.oauth_token}")}&panel=diy&sourceDisplayName=Tumblr%20Status%20Board%20Widgets'" }
+              Add to Status Board

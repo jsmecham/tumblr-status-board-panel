@@ -1,0 +1,9 @@
+
+%h1= @title
+
+.follower-count-container
+  .follower-count
+    - @followers["total_users"].to_s.each_char do |digit|
+      .digit= digit
+
+%h2 Followers
