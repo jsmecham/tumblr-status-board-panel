@@ -3,7 +3,7 @@ require "tumblr_client"
 require "omniauth"
 require "omniauth-tumblr"
 require "dm-core"
-require "dm-sqlite-adapter"
+require "dm-sqlite-adapter" if development?
 require "dm-postgres-adapter"
 require "dm-migrations"
 require "base64"

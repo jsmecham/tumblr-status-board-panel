@@ -14,7 +14,7 @@ gem "omniauth"
 gem "omniauth-tumblr"
 
 gem "dm-core"
-gem "dm-sqlite-adapter"
+gem "dm-sqlite-adapter", :group => :development
 gem "dm-postgres-adapter"
 gem "dm-migrations"
 
