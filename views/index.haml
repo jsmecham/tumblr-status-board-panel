@@ -11,5 +11,5 @@
         - @blogs.each do |blog|
           .blog
             %iframe{ src: "followers/#{blog["name"]}" }
-            %button{ onclick: "location.href='panicboard://?url=#{URI.escape("#{settings.base_url}/followers/#{blog["name"]}?token=#{current_user.oauth_token}")}&panel=diy&sourceDisplayName=Tumblr%20Status%20Board%20Widgets'" }
+            %button{ onclick: "location.href='panicboard://?url=#{CGI.escape("#{settings.base_url}/followers/#{blog["name"]}?token=#{current_user.oauth_token}")}&panel=diy&sourceDisplayName=#{CGI.escape("Tumblr Status Board Widgets")}'" }
               Add to Status Board
