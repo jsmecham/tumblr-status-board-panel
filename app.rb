@@ -1,4 +1,7 @@
 
+require "sinatra"
+require "sinatra/json"
+require "sinatra/reloader" if development?
 require "tumblr_client"
 require "omniauth"
 require "omniauth-tumblr"
@@ -10,9 +13,6 @@ require "base64"
 require "multi_json"
 require "open-uri"
 require "sass"
-require "sinatra"
-require "sinatra/json"
-require "sinatra/reloader" if development?
 require 'raven'
 
 # Configuration --------------------------------------------------------------
