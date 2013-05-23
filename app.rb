@@ -6,7 +6,7 @@ require "sinatra/reloader" if development?
 
 # Configuration --------------------------------------------------------------
 
-configuration do
+configure do
 
   set :consumer_key, ENV["TUMBLR_KEY"]
   set :consumer_secret, ENV["TUMBLR_SECRET"]
