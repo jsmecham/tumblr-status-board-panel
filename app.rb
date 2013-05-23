@@ -13,6 +13,7 @@ configure do
   set :database_url, ENV["DATABASE_URL"] || "sqlite3://#{Dir.pwd}/database.db"
   set :styles_path, "#{File.dirname(__FILE__)}/public/styles"
   set :scripts_path, "#{File.dirname(__FILE__)}/public/scripts"
+  set :session_secret, ENV["SESSION_SECRET"] unless ENV["SESSION_SECRET"].nil?
 
 end
 
