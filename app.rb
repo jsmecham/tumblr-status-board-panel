@@ -1,38 +1,19 @@
+#
+# Tumblr Widget for Status Board
+#
 
-require "sinatra"
-require "sinatra/json"
 require "sinatra/reloader" if development?
-require "tumblr_client"
-require "omniauth"
-require "omniauth-tumblr"
-require "dm-core"
-require "dm-sqlite-adapter" if development?
-require "dm-postgres-adapter"
-require "dm-migrations"
-require "base64"
-require "multi_json"
-require "open-uri"
-require "sass"
-require 'raven'
 
 # Configuration --------------------------------------------------------------
 
-set :base_url, "https://tumblr-status-board-widget.herokuapp.com"
-set :consumer_key, ENV["TUMBLR_KEY"]
-set :consumer_secret, ENV["TUMBLR_SECRET"]
-set :database_url, ENV["DATABASE_URL"] || "sqlite3://#{Dir.pwd}/database.db"
+configuration do
 
-# Internal Configuration -----------------------------------------------------
+  set :consumer_key, ENV["TUMBLR_KEY"]
+  set :consumer_secret, ENV["TUMBLR_SECRET"]
+  set :database_url, ENV["DATABASE_URL"] || "sqlite3://#{Dir.pwd}/database.db"
+  set :styles_path, "#{File.dirname(__FILE__)}/public/styles"
+  set :scripts_path, "#{File.dirname(__FILE__)}/public/scripts"
 
-set :styles_path, "#{File.dirname(__FILE__)}/public/styles"
-
-# Sentry Setup (Optional) ----------------------------------------------------
-
-if ENV["SENTRY_DSN"]
-  Raven.configure do |config|
-    config.dsn = ENV["SENTRY_DSN"]
-  end
-  use Raven::Rack
 end
 
 # DataMapper / Model Setup ---------------------------------------------------
@@ -46,10 +27,10 @@ class User
   property :oauth_token, String
   property :oauth_token_secret, String
   property :created_at, DateTime
+  property :updated_at, DateTime
 end
 
-DataMapper.finalize
-DataMapper.auto_upgrade!
+DataMapper.finalize.auto_upgrade!
 
 # OmniAuth -------------------------------------------------------------------
 
@@ -140,4 +121,10 @@ get "/styles/:stylesheet.css" do |stylesheet|
   content_type "text/css"
   template = File.read(File.join(settings.styles_path, "#{stylesheet}.sass"))
   Sass::Engine.new(template).render
+end
+
+get "/scripts/:script.js" do |script|
+  content_type "application/javascript"
+  template = File.read(File.join(settings.scripts_path, "#{script}.coffee"))
+  CoffeeScript.compile(template)
 end
