@@ -5,7 +5,6 @@ ruby "2.0.0"
 
 gem "rack-ssl"
 gem "open-uri-cached"
-gem "addressable"
 
 #
 # Sinatra

@@ -92,7 +92,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  addressable
   coffee-script
   dm-core
   dm-migrations
