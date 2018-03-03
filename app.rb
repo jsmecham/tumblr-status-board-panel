@@ -1,5 +1,5 @@
 #
-# Tumblr Widget for Status Board
+# Tumblr Status Board Panel
 #
 
 require "sinatra/reloader" if development?
