@@ -38,8 +38,3 @@ gem "dm-postgres-adapter", group: :production
 # Tumblr API Client
 #
 gem "tumblr_client"
-
-#
-# Sentry (for Error Reporting)
-#
-gem "sentry-raven", git: "https://github.com/getsentry/raven-ruby.git"
