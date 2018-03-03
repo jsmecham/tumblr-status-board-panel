@@ -53,7 +53,7 @@ helpers do
   end
 
   def tumblr_client
-    client ||= Tumblr::Client.new
+    @client ||= Tumblr::Client.new
   end
 
   def current_user
