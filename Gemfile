@@ -4,7 +4,6 @@ source "http://rubygems.org"
 ruby "~> 2.4.3"
 
 gem "rack-ssl"
-gem "open-uri-cached"
 
 #
 # Sinatra

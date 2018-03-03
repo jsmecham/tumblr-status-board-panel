@@ -55,7 +55,6 @@ GEM
     omniauth-tumblr (1.2)
       multi_json
       omniauth-oauth (~> 1.0)
-    open-uri-cached (0.0.5)
     public_suffix (2.0.5)
     rack (1.6.9)
     rack-protection (1.5.4)
@@ -107,7 +106,6 @@ DEPENDENCIES
   haml
   omniauth
   omniauth-tumblr
-  open-uri-cached
   rack-ssl
   sass
   sinatra
